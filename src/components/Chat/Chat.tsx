@@ -111,7 +111,7 @@ const  Chat = (props: IChatProps): ReactElement => {
                                         <input type="text" className="form-control" id="email" placeholder="Enter Email"/>
                                     </div>
                                     <div className="field">
-                                        <label htmlFor="inquiry">Inquiry <span className="require">*</span></label>
+                                        <label htmlFor="inquiry">Inquiry <span className="required">*</span></label>
                                         <textarea id="inquiry" placeholder="Your inquiry" className="form-control"></textarea>
                                     </div>
                                     <div className="field">
