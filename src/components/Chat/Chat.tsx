@@ -11,7 +11,7 @@ const  Chat = (props: IChatProps): ReactElement => {
         <div className={className}>
             <div className="chat-widget">
                 <div className="tab-content">
-                    <div className="content-box">
+                    <div className="content-box d-none">
                         <strong className="heading-box">New Conversation <span className="close"></span></strong>
                         <div className="scrolled-area">
                             <div className="content-area">
@@ -35,7 +35,7 @@ const  Chat = (props: IChatProps): ReactElement => {
                                     </div>
                                     <div className="field">
                                         <label htmlFor="select">Select an option</label>
-                                        <span className="fake-select" id="select">
+                                        <span className="fake-select">
                                             <select>
                                                 <option>Option Item 1</option>
                                                 <option>Option Item 2</option>
@@ -49,7 +49,7 @@ const  Chat = (props: IChatProps): ReactElement => {
                             </div>
                         </div>
                     </div>
-                    <div className="content-box  d-none">
+                    <div className="content-box d-none">
                         <strong className="heading-box heading-box__user-status">
                             <span className="img-holder">
                                 <img src="https://via.placeholder.com/350x150" alt="profile image" />
@@ -96,6 +96,70 @@ const  Chat = (props: IChatProps): ReactElement => {
                             <input type="text" placeholder="Your message" />
                         </div>
                     </div>
+                    <div className="content-box">
+                        <strong className="heading-box bg-blue">Submit a ticket <span className="close"></span></strong>
+                        <div className="scrolled-area">
+                            <div className="content-area">
+                                <span className="title-text">Please provide information below to submit a service request: </span>
+                                <form action="#" className="form">
+                                    <div className="field">
+                                        <label htmlFor="ticket-name">Name <span className="required">*</span></label>
+                                        <input type="text" className="form-control" id="ticket-name" placeholder="Enter Name"/>
+                                    </div>
+                                    <div className="field">
+                                        <label htmlFor="email">Email <span className="required">*</span></label>
+                                        <input type="text" className="form-control" id="email" placeholder="Enter Email"/>
+                                    </div>
+                                    <div className="field">
+                                        <label htmlFor="inquiry">Inquiry <span className="require">*</span></label>
+                                        <textarea id="inquiry" placeholder="Your inquiry" className="form-control"></textarea>
+                                    </div>
+                                    <div className="field">
+                                        <label htmlFor="account">Account Number</label>
+                                        <input type="text" className="form-control" id="account" />
+                                    </div>
+                                    <button type="submit" className="button button-primary">Submit</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="content-box d-none">
+                        <strong className="heading-box bg-blue">Request a callback <span className="close"></span></strong>
+                        <div className="scrolled-area">
+                            <div className="content-area">
+                                <span className="title-text">Please Fill in the information and a customer service representative will be in touch with you </span>
+                                <form action="#" className="form">
+                                    <div className="field">
+                                        <label htmlFor="request-name">Name <span className="required">*</span></label>
+                                        <input type="text" className="form-control" id="request-name" placeholder="Enter Name"/>
+                                    </div>
+                                    <div className="field">
+                                        <label htmlFor="request-email">Email <span className="required">*</span></label>
+                                        <input type="text" className="form-control" id="request-email" placeholder="Enter Email"/>
+                                    </div>
+                                    <div className="field">
+                                        <label htmlFor="request-phone">Phone Number <span className="required">*</span></label>
+                                        <input type="text" className="form-control" id="request-phone" placeholder="Enter Phone number"/>
+                                    </div>
+                                    <div className="field">
+                                        <label htmlFor="request-phone">Country <span className="required">*</span></label>
+                                        <span className="fake-select">
+                                            <select>
+                                                <option>Select</option>
+                                                <option>USA</option>
+                                                <option>Canada</option>
+                                            </select>
+                                        </span>
+                                    </div>
+                                    <div className="field">
+                                        <label htmlFor="request-message">MESSAGE  <span className="require">*</span></label>
+                                        <textarea id="request-message" placeholder="Enter Message" className="form-control"></textarea>
+                                    </div>
+                                    <button type="submit" className="button button-primary">Submit</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <div className="bottom-area">
                     <ul className="tabset">
@@ -129,6 +193,12 @@ export default  styled(Chat)`
             color: #fff;
             padding: 15px 40px 15px 15px;
             position: relative;
+            font-size: 18px;
+            line-height: 22px;
+
+            &.bg-blue {
+                background: #4094cf;
+            }
 
             &__user-status {
                 padding-left: 70px;
@@ -264,9 +334,12 @@ export default  styled(Chat)`
         label {
             display: inline-block;
             vertical-align: top;
-            font-weight: 700;
+            font-weight: 600;
             color: #000;
             margin: 0 0 5px;
+            font-size: 14px;
+            line-height: 18px;
+            text-transform: uppercase;
         }
 
         textarea {
@@ -294,22 +367,43 @@ export default  styled(Chat)`
 
         .title-text {
             display: block;
-            font-size: 16px;
+            font-size: 14px;
             line-height: 1.5;
             margin: 0 0 15px;
         }
 
-        select {
-            width: 100%;
-            border: none;
-            outline: none;
-            height: 40px;
-            border-radius: 4px;
-            background: #eee;
-            padding: 10ox 15px;
+        .fake-select {
+            display: block;
+            position: relative;
+
+            &:after {
+                position: absolute;
+                right: 15px;
+                top: 12px;
+                content: '';
+                width: 10px;
+                height: 10px;
+                border-top: 2px solid #666;
+                border-right: 2px solid #666;
+                transform: rotate(135deg);
+                pointer-events: none;
+            }
+            
+
+            select {
+                width: 100%;
+                border: none;
+                outline: none;
+                height: 40px;
+                border-radius: 4px;
+                background: #eee;
+                padding: 10px 15px;
+                appearance: none;
+                -webkit-appearance: none;
+            }
         }
 
-        .button-primary {
+        .button {
             display: block;
             margin: 0 0 0 auto;
             background: #6f6f6f;
@@ -320,9 +414,20 @@ export default  styled(Chat)`
             min-width: 140px;
             border-radius: 4px;
             transition: all 0.4s ease;
+            cursor: pointer;
+            font-size: 16px;
+            line-height: 20px;
 
             &:hover {
                 background: #000;
+            }
+
+            &.button-primary {
+                background: #4094cf;
+
+                &:hover {
+                    background: #347bad;
+                }
             }
         }
 
