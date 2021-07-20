@@ -33,3 +33,4 @@ declare module "*.module.scss" {
 declare module "react-datepicker";
 declare module "react-scroll-to-bottom";
 declare module "react-emoji";
+declare module "dummy-text-generator";

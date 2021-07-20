@@ -44,7 +44,7 @@ const { values, handleChange, setFieldValue, touched,handleBlur, errors, handleS
   onSubmit: (values: FormikValues) => {
     console.log(values.date);
     console.log({values});
-    onSubmit?.(values.name)
+    onSubmit?.(values.name, values.message)
   },
 });
   return (

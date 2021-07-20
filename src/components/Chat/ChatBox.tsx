@@ -4,6 +4,7 @@ import StartChat from "./StartChat";
 import ScrollToBottom from "react-scroll-to-bottom";
 import { SupportIcon } from "../../assets";
 import ReactEmoji from "react-emoji";
+import loremGenerator  from "dummy-text-generator";
 
 type IChatProps = {
   className?: string;
@@ -15,12 +16,19 @@ enum options {
   chatbox = "chatbox",
 
 }
+enum MESSANGERS  {
+  ME='me',
+  THEM='them'
+}
 const ChatBox = (props: IChatProps): ReactElement => {
   const { className, classes, handleClose } = props;
     const [tabStates, setTabStates] = useState<string>("startchat");
-    const [messages, setMessages] = useState<string[]>([])
+    const [messages, setMessages] = useState<
+      { message: string; sender: string }[]
+    >([]);
     const [message, setMessage] = useState('')
     const [person, setPerson] = useState("Noah");
+    const [firstMessage, setFirstMessage] = useState<string>();
 
   const handleChangeMessage =(e:any) => {
 setMessage(e.target.value)
@@ -28,8 +36,16 @@ setMessage(e.target.value)
   const handeKeypress = (e:any) => {
       if (e.which === 13) {
         console.log("entered");
-        setMessages([...messages, message])
+        const msg = {sender: MESSANGERS.ME, message}
+        setMessages(mgs => [...mgs, msg]);
         setMessage('')
+        setTimeout(() => {
+          const sender = {
+            sender: MESSANGERS.THEM,
+            message: loremGenerator.generateSentence(10),
+          };
+          setMessages(msgs=> [...msgs, sender]);
+        }, 1000);
       }
   }
   return (
@@ -54,6 +70,9 @@ setMessage(e.target.value)
             <ScrollToBottom className="messages">
               <div className="d-flex align-items-end flex-direction-column h-100">
                 <div className="content-area">
+                 {firstMessage && <div className="chat-text">
+                    <p>{firstMessage}</p>
+                  </div>}
                   <div className="chat-text sender">
                     <p>Hello, {person}</p>
                   </div>
@@ -65,8 +84,12 @@ setMessage(e.target.value)
                   </div>
                   {messages.map((message) => {
                     return (
-                      <div className="chat-text">
-                        <p key={message}>{ReactEmoji.emojify(message)}</p>
+                      <div
+                        className={`chat-text ${
+                          message.sender !== MESSANGERS.ME ? "sender" : ""
+                        }`}
+                      >
+                        <p key={message.message}>{ReactEmoji.emojify(message.message)}</p>
                       </div>
                     );
                   })}
@@ -88,8 +111,9 @@ setMessage(e.target.value)
       ) : (
         // </div>
         <StartChat
-          onSubmit={(person: string) => {
+          onSubmit={(person: string, message: string) => {
             setPerson(person);
+            message && setFirstMessage(message);
             setTabStates("chatbox");
           }}
           handleClose={handleClose}
