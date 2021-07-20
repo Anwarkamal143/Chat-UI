@@ -34,17 +34,16 @@ const ChatBox = (props: IChatProps): ReactElement => {
 setMessage(e.target.value)
   }
   const handeKeypress = (e:any) => {
-      if (e.which === 13) {
-        console.log("entered");
-        const msg = {sender: MESSANGERS.ME, message}
-        setMessages(mgs => [...mgs, msg]);
-        setMessage('')
+      if (e.key === "Enter") {
+        const msg = { sender: MESSANGERS.ME, message };
+        setMessages((mgs) => [...mgs, msg]);
+        setMessage("");
         setTimeout(() => {
           const sender = {
             sender: MESSANGERS.THEM,
             message: loremGenerator.generateSentence(10),
           };
-          setMessages(msgs=> [...msgs, sender]);
+          setMessages((msgs) => [...msgs, sender]);
         }, 1000);
       }
   }
@@ -82,14 +81,15 @@ setMessage(e.target.value)
                       operator ...
                     </p>
                   </div>
-                  {messages.map((message) => {
+                  {messages.map((message, i) => {
                     return (
                       <div
+                        key={message.message + i}
                         className={`chat-text ${
                           message.sender !== MESSANGERS.ME ? "sender" : ""
                         }`}
                       >
-                        <p key={message.message}>{ReactEmoji.emojify(message.message)}</p>
+                        <p>{ReactEmoji.emojify(message.message)}</p>
                       </div>
                     );
                   })}
