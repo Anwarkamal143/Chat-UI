@@ -1,4 +1,5 @@
 import  { ReactElement } from 'react'
+import { Link } from 'react-router-dom';
 import styled from 'styled-components'
 import { LikeIcon } from '../../assets';
 import { Header } from '../Header'
@@ -22,10 +23,10 @@ export const  Faq = (props: IChatProps): ReactElement => {
               </div>
               <div className="question-box">
                 <strong className="question">
-                  <a href="#">
+                  <Link to="">
                     How do I install LiveHelpNow widget code in Google Tag
                     Manager
-                  </a>
+                  </Link>
                 </strong>
                 <div className="answer-box">
                   <p>

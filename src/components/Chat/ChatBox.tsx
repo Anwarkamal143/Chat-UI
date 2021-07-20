@@ -36,6 +36,7 @@ setMessage(e.target.value)
           <div className="content-box">
             <strong className="heading-box heading-box__user-status">
               <span className="img-holder">
+                {/* eslint-disable */}
                 <img
                   src="https://via.placeholder.com/350x150"
                   alt="profile image"
