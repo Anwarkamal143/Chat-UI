@@ -30,7 +30,7 @@ const validationSchema = yup.object().shape({
 const Startchat = (props: IChatProps): ReactElement => {
   const { className, classes, handleClose, onSubmit } = props;
   const ref = useRef<HTMLDivElement>(null)
-const { values, handleChange, setFieldValue, touched,handleBlur, errors, handleSubmit, setFieldError } = useFormik({
+const { values, handleChange, setFieldValue, touched,handleBlur, errors, handleSubmit } = useFormik({
   initialValues: {
     name: "",
     message: "",

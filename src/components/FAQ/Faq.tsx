@@ -1,9 +1,9 @@
-import  { Fragment, ReactElement, useState } from 'react'
+import  {  ReactElement, useState } from 'react'
 import { Link } from 'react-router-dom';
 import styled from 'styled-components'
 import { LikeIcon } from '../../assets';
 import { Header } from '../Header'
-import loremGenerator from "dummy-text-generator";
+
 
 type IChatProps = {
   className?: string;
@@ -12,7 +12,8 @@ type IChatProps = {
 const Likes = [1,2,3,4,5]
 export const  Faq = (props: IChatProps): ReactElement => {
     const { className, handleClose } = props;
-    const [faqs, setFaqs] = useState([
+    // eslint-disable-next-line
+    const [faqs, _] = useState([
       {
         question:
           "How do I install LiveHelpNow widget code in Google Tag Manager",
