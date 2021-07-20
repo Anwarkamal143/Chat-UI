@@ -2,6 +2,7 @@ import React, { ReactElement, useState } from "react";
 import styled from "styled-components";
 import StartChat from "./StartChat";
 import ScrollToBottom from "react-scroll-to-bottom";
+import { SupportIcon } from "../../assets";
 
 type IChatProps = {
   className?: string;
@@ -38,10 +39,11 @@ setMessage(e.target.value)
             <strong className="heading-box heading-box__user-status">
               <span className="img-holder">
                 {/* eslint-disable */}
-                <img
+                <SupportIcon />
+                {/* <img
                   src="https://via.placeholder.com/350x150"
                   alt="profile image"
-                />
+                /> */}
               </span>
               <span className="title">Conversation</span>
               <span className="status active">{person}</span>
@@ -94,7 +96,9 @@ setMessage(e.target.value)
 };
 
 export default styled(ChatBox)`
-
+svg{
+  fill: white;
+}
   .messages {
     padding: 5% 0;
     overflow: auto;
