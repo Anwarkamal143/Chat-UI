@@ -82,10 +82,7 @@ const validation = (value: string) => {
                   className="form-control"
                   id="name"
                   name="name"
-                  onChange={(e) => {
-                    handleChange(e);
-                    validation(e.target.value);
-                  }}
+                  onChange={ handleChange}
                   onBlur={handleBlur}
                 />
                 {errors.name && touched.name && (
