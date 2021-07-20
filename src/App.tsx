@@ -1,14 +1,16 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
-import { Chat } from './components/Chat';
+import { ChatWidget } from "./Pages/ChatWidget";
 import { AppLayout } from './layouts';
-
+import {BrowserRouter as Router} from 'react-router-dom'
 function App() {
   return (
+    <Router>
+
     <AppLayout>
-      <Chat />
+      <ChatWidget />
     </AppLayout>
+    </Router>
   );
 }
 

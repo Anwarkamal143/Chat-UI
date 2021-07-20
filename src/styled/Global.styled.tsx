@@ -44,4 +44,22 @@ html{
   .alig-center{
     align-items: center;
   }
+  textarea {
+    &.form-control {
+      resize: none;
+      height: 80px;
+    }
+  }
+
+  .form-control,
+  input[type="text"],
+  input[type="email"] {
+    padding: 10px 15px;
+    width: 100%;
+    border: none;
+    outline: none;
+    height: 40px;
+    border-radius: 4px;
+    background: #eee;
+  }
 `
