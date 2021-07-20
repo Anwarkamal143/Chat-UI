@@ -15,7 +15,7 @@ type IChatProps = {
   handleClose?: ()=> void
 };
 const validationSchema = yup.object().shape({
-  name: yup.string()
+  name: yup.string().trim()
 
     .required("Name is required!"),
   // topics: yup.array()
