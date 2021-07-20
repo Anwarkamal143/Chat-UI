@@ -16,7 +16,7 @@ enum options {
 const ChatBox = (props: IChatProps): ReactElement => {
   const { className, classes, handleClose } = props;
     const [tabStates, setTabStates] = useState<string>("startchat");
-    const [messages, setMessages] = useState([" Please be patient while you are being conneted with an operator ..."])
+    const [messages, setMessages] = useState(["Please be patient while you are being conneted with an operator ..."])
     const [message, setMessage] = useState('')
     const [person, setPerson] = useState("Noah");
 
@@ -54,7 +54,7 @@ setMessage(e.target.value)
 
 
 
-                  <div className="chat-text">
+                  <div className="chat-text sender">
                     <p>Hello, {person}</p>
                   </div>
                   {messages.map((message) => {
