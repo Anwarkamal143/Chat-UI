@@ -31,3 +31,4 @@ declare module "*.module.scss" {
     export default classes
 }
 declare module "react-datepicker";
+declare module "react-scroll-to-bottom";

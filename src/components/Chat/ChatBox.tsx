@@ -1,6 +1,7 @@
 import React, { ReactElement, useState } from "react";
 import styled from "styled-components";
 import StartChat from "./StartChat";
+import ScrollToBottom from "react-scroll-to-bottom";
 
 type IChatProps = {
   className?: string;
@@ -46,9 +47,13 @@ setMessage(e.target.value)
               <span className="status active">{person}</span>
               <span className="close" onClick={handleClose}></span>
             </strong>
-            <div className="scrolled-area">
+            {/* <div className="scrolled-area"> */}
+          <ScrollToBottom  className="messages">
               <div className="d-flex align-items-end flex-direction-column h-100">
                 <div className="content-area">
+
+
+
                   <div className="chat-text">
                     <p>Hello, {person}</p>
                   </div>
@@ -61,6 +66,7 @@ setMessage(e.target.value)
                   })}
                 </div>
               </div>
+                  </ScrollToBottom>
             </div>
             <div className="message-box">
               <span className="more-options"></span>
@@ -73,7 +79,7 @@ setMessage(e.target.value)
               />
             </div>
           </div>
-        </div>
+        // </div>
       ) : (
         <StartChat
           onSubmit={(person: string) => {
@@ -88,5 +94,13 @@ setMessage(e.target.value)
 };
 
 export default styled(ChatBox)`
-  
+
+  .messages {
+    padding: 5% 0;
+    overflow: auto;
+    flex: auto;
+    /* height: 500px; */
+    height: 400px;
+    max-height: calc(100vh - 250px);
+  }
 `;

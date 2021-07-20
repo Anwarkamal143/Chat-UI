@@ -5,7 +5,12 @@ import { Ticket } from "../TICKET";
 import ChatBox from "./ChatBox";
 import { Link } from "react-router-dom";
 import { Faq } from "../FAQ/Faq";
-import { ISCALLBACK_FEATURE, ISCHAT_FEATURE, ISFAQ_FEATURE, ISTICKET_FEATURE } from "../../config";
+import {
+  ISCALLBACK_FEATURE,
+  ISCHAT_FEATURE,
+  ISFAQ_FEATURE,
+  ISTICKET_FEATURE,
+} from "../../config";
 import { CHATOPTIONS } from "../../utils/enums";
 
 type IChatProps = {
@@ -15,26 +20,25 @@ type IChatProps = {
 const ChatC = (props: IChatProps): ReactElement => {
   const { className } = props;
   const [tabStates, setTabStates] = useState<string>(CHATOPTIONS.CHAT);
-  const [dialogState, setDialogState] = useState<boolean>(false)
+  const [dialogState, setDialogState] = useState<boolean>(false);
 
   const handleClick = (op: string) => {
-        setTabStates(op)
-  }
+    setTabStates(op);
+  };
   useEffect(() => {
-    
-if (!ISCHAT_FEATURE) {
-  if (ISFAQ_FEATURE) {
-    setTabStates(CHATOPTIONS.FAQ);
-  }else if(ISTICKET_FEATURE){
-    setTabStates(CHATOPTIONS.TICKET)
-  } else if(ISCALLBACK_FEATURE){
-    setTabStates(CHATOPTIONS.CALLBACK)
-  }
-}
-  }, [])
+    if (!ISCHAT_FEATURE) {
+      if (ISFAQ_FEATURE) {
+        setTabStates(CHATOPTIONS.FAQ);
+      } else if (ISTICKET_FEATURE) {
+        setTabStates(CHATOPTIONS.TICKET);
+      } else if (ISCALLBACK_FEATURE) {
+        setTabStates(CHATOPTIONS.CALLBACK);
+      }
+    }
+  }, []);
   const handleCloseSupport = () => {
-      setDialogState(!dialogState)
-  }
+    setDialogState(!dialogState);
+  };
   return (
     <div className={className}>
       {dialogState && (
@@ -106,7 +110,9 @@ if (!ISCHAT_FEATURE) {
                       e.preventDefault();
                       handleClick(CHATOPTIONS.CALLBACK);
                     }}
-                    className={CHATOPTIONS.CALLBACK === tabStates ? "active" : ""}
+                    className={
+                      CHATOPTIONS.CALLBACK === tabStates ? "active" : ""
+                    }
                   >
                     Callbak
                   </Link>
@@ -164,7 +170,7 @@ export default styled(ChatC)`
       }
     }
   }
-  
+
   .d-none {
     display: none !important;
   }
@@ -185,131 +191,131 @@ export default styled(ChatC)`
     line-height: 20px;
 
     &:hover {
-        background: #000;
+      background: #000;
     }
 
     &.button-primary {
-        background: #4094cf;
+      background: #4094cf;
 
-        &:hover {
-            background: #347bad;
-        }
+      &:hover {
+        background: #347bad;
+      }
     }
-}
+  }
   .chat-widget {
     position: fixed;
     right: 15px;
     bottom: 54px;
     width: 370px;
     overflow: hidden;
-    box-shadow: 0 2px 8px rgba(0,0,0, 0.2);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
     border-radius: 10px;
     z-index: 9999;
 
     .heading-box {
+      display: block;
+      background: #6f6f6f;
+      color: #fff;
+      padding: 15px 40px 15px 15px;
+      position: relative;
+      font-size: 18px;
+      line-height: 22px;
+
+      &.bg-blue {
+        background: #4094cf;
+      }
+
+      &__user-status {
+        padding-left: 70px;
+      }
+
+      .img-holder {
+        position: absolute;
+        left: 10px;
+        top: 50%;
+        transform: translate(0, -50%);
+        border-radius: 100%;
+        width: 50px;
+        height: 50px;
+        overflow: hidden;
+
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+      }
+
+      .title {
         display: block;
-        background: #6f6f6f;
-        color: #fff;
-        padding: 15px 40px 15px 15px;
+      }
+
+      .status {
+        display: block;
+        font-weight: 400;
         position: relative;
-        font-size: 18px;
-        line-height: 22px;
+        padding: 0 0 0 12px;
 
-        &.bg-blue {
-            background: #4094cf;
+        &.active {
+          &:before {
+            background: #8fd82d;
+          }
         }
 
-        &__user-status {
-            padding-left: 70px;
+        &:before {
+          position: absolute;
+          left: 0;
+          top: 6px;
+          width: 6px;
+          height: 6px;
+          border-radius: 100%;
+          background: #e4e4e4;
+          content: "";
+        }
+      }
+
+      .close {
+        position: absolute;
+        right: 15px;
+        top: 12px;
+        width: 20px;
+        height: 20px;
+        cursor: pointer;
+
+        &:before,
+        &:after {
+          position: absolute;
+          left: 0;
+          right: 0;
+          top: 10px;
+          content: "";
+          height: 3px;
+          background: #fff;
+          transform: rotate(45deg);
         }
 
-        .img-holder {
-            position: absolute;
-            left: 10px;
-            top: 50%;
-            transform: translate(0, -50%);
-            border-radius: 100%;
-            width: 50px;
-            height: 50px;
-            overflow: hidden;
-
-            img {
-                width: 100%;
-                height: 100%;
-                object-fit: cover;
-            }
+        &:after {
+          transform: rotate(-45deg);
         }
-
-        .title {
-            display: block;
-        }
-
-        .status {
-            display: block;
-            font-weight: 400;
-            position: relative;
-            padding: 0 0 0 12px;
-
-            &.active {
-                &:before {
-                    background: #8fd82d;
-                }
-            }
-
-            &:before {
-                position: absolute;
-                left: 0;
-                top: 6px;
-                width: 6px;
-                height: 6px;
-                border-radius: 100%;
-                background: #e4e4e4;
-                content: '';
-            }
-        }
-
-        .close {
-            position: absolute;
-            right: 15px;
-            top: 12px;
-            width: 20px;
-            height: 20px;
-            cursor: pointer;
-
-            &:before,
-            &:after {
-                position: absolute;
-                left: 0;
-                right: 0;
-                top: 10px;
-                content: '';
-                height: 3px;
-                background: #fff;
-                transform: rotate(45deg);
-            }
-
-            &:after {
-                transform: rotate(-45deg);
-            }
-        }
+      }
     }
 
     .scrolled-area {
-        height: 400px;
-        overflow: auto;
-        max-height: calc(100vh - 250px);
+      height: 400px;
+      overflow: auto;
+      max-height: calc(100vh - 250px);
     }
 
     .content-area {
-        padding: 15px;
+      padding: 15px;
     }
 
     .field {
-        margin: 0 0 20px;
+      margin: 0 0 20px;
     }
 
     .h-100 {
-        min-height: 100%;
+      min-height: 100%;
     }
 
     label {
@@ -321,8 +327,8 @@ export default styled(ChatC)`
       font-size: 14px;
       line-height: 18px;
       text-transform: uppercase;
-    }    
-    
+    }
+
     .select-holder {
       input[type="text"] {
         height: 30px;
@@ -334,90 +340,110 @@ export default styled(ChatC)`
     }
 
     .required {
-        color: #f00;
-        display: inline-block;
-        vertical-align: top;
+      color: #f00;
+      display: inline-block;
+      vertical-align: top;
     }
 
     .title-text {
-        display: block;
-        font-size: 14px;
-        line-height: 1.5;
-        margin: 0 0 15px;
+      display: block;
+      font-size: 14px;
+      line-height: 1.5;
+      margin: 0 0 15px;
     }
 
     .message-box {
-        border-top: 1px solid #ebebeb;
-        padding-left: 40px;
-        position: relative;
+      border-top: 1px solid #ebebeb;
+      padding-left: 40px;
+      position: relative;
 
-        input[type="text"] {
+      input[type="text"] {
+        background: #fff;
+        width: 100%;
+        padding: 15px;
+        border: none;
+        outline: none;
+      }
+
+      .more-options {
+        width: 26px;
+        height: 26px;
+        background: #585858;
+        border-radius: 100%;
+        position: absolute;
+        left: 10px;
+        top: 6px;
+
+        &:after,
+        &:before {
+          position: absolute;
+          width: 14px;
+          height: 2px;
           background: #fff;
-            width: 100%;
-            padding: 15px;
-            border: none;
-            outline: none;
+          border-radius: 4px;
+          content: "";
+          left: 50%;
+          top: 50%;
+          margin: -1px 0 0 -7px;
         }
 
-        .more-options {
-            width: 26px;
-            height: 26px;
-            background: #585858;
-            border-radius: 100%;
-            position: absolute;
-            left: 10px;
-            top: 6px;
-
-            &:after,
-            &:before {
-                position: absolute;
-                width: 14px;
-                height: 2px;
-                background: #fff;
-                border-radius: 4px;
-                content: '';
-                left: 50%;
-                top: 50%;
-                margin: -1px 0 0 -7px;
-            }
-
-            &:after {
-                transform: rotate(90deg);
-            }
+        &:after {
+          transform: rotate(90deg);
         }
+      }
     }
 
     .d-flex {
-        display: flex;
+      display: flex;
     }
 
     .align-items-end {
-        justify-content: flex-end;
+      justify-content: flex-end;
     }
 
     .flex-direction-column {
-        flex-direction: column;
+      flex-direction: column;
     }
 
     .chat-text {
-        background: #f8f8f8;
-        border-radius: 15px;
-        padding: 10px;
-        font-size: 16px;
-        line-height: 22px;
-        width: 95%;
-        margin: 0 0 15px auto;
-        color: #777;
+      background: #efefef;
+      border-radius: 15px 15px 15px 0;
+      padding: 10px;
+      font-size: 16px;
+      line-height: 22px;
+      width: calc(100% - 40px);
+      margin: 0 0 15px auto;
+      color: #777;
+      position: relative;
 
-        &.sender {
-            margin: 0 0 15px;
-            background: #4094cf;
-            color: #fff;
-        }
+      &:before {
+        position: absolute;
+        right: 100%;
+        bottom: 0;
+        border-style: solid;
+        border-width: 0 0 16px 16px;
+        border-color: transparent transparent #efefef transparent;
+        content: "";
+      }
 
-        p {
-            margin: 0;
+      &.sender {
+        margin: 0 0 15px;
+        background: #4094cf;
+        color: #fff;
+        border-radius: 15px 15px 0 15px;
+
+        &:before {
+          right: auto;
+          left: 100%;
+          border-style: solid;
+          border-width: 15px 0 0 15px;
+          border-color: transparent transparent transparent #4094cf;
         }
+      }
+
+      p {
+        margin: 0;
+      }
     }
 
     .question-box {
