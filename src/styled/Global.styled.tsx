@@ -6,21 +6,10 @@ export const GlobalStyle = createGlobalStyle`
     margin: 0;
     padding: 0;
   }
-html{
-    font-size: 66.5%;
-    box-sizing: border-box;
-    font-family: 'Source Sans Pro', sans-serif;
-
-    /* font-weight: 600; */
-    @media (min-width: 678px){
-      font-size: 100%;
-    }
-}
 
   body {
     margin: 0;
     padding: 0;
-    font-family: 'Source Sans Pro', sans-serif;
     box-sizing: border-box;
   }
   a, a:visited, a:active {
