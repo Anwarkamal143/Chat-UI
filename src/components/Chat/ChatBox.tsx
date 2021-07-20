@@ -3,6 +3,7 @@ import styled from "styled-components";
 import StartChat from "./StartChat";
 import ScrollToBottom from "react-scroll-to-bottom";
 import { SupportIcon } from "../../assets";
+import ReactEmoji from "react-emoji";
 
 type IChatProps = {
   className?: string;
@@ -17,7 +18,7 @@ enum options {
 const ChatBox = (props: IChatProps): ReactElement => {
   const { className, classes, handleClose } = props;
     const [tabStates, setTabStates] = useState<string>("startchat");
-    const [messages, setMessages] = useState(["Please be patient while you are being conneted with an operator ..."])
+    const [messages, setMessages] = useState<string[]>([])
     const [message, setMessage] = useState('')
     const [person, setPerson] = useState("Noah");
 
@@ -50,39 +51,42 @@ setMessage(e.target.value)
               <span className="close" onClick={handleClose}></span>
             </strong>
             {/* <div className="scrolled-area"> */}
-          <ScrollToBottom  className="messages">
+            <ScrollToBottom className="messages">
               <div className="d-flex align-items-end flex-direction-column h-100">
                 <div className="content-area">
-
-
-
                   <div className="chat-text sender">
                     <p>Hello, {person}</p>
+                  </div>
+                  <div className="chat-text sender">
+                    <p>
+                      Please be patient while you are being conneted with an
+                      operator ...
+                    </p>
                   </div>
                   {messages.map((message) => {
                     return (
                       <div className="chat-text">
-                        <p key={message}>{message}</p>
+                        <p key={message}>{ReactEmoji.emojify(message)}</p>
                       </div>
                     );
                   })}
                 </div>
               </div>
-                  </ScrollToBottom>
-            </div>
-            <div className="message-box">
-              <span className="more-options"></span>
-              <input
-                type="text"
-                value={message}
-                placeholder="Your message"
-                onChange={handleChangeMessage}
-                onKeyPress={handeKeypress}
-              />
-            </div>
+            </ScrollToBottom>
           </div>
-        // </div>
+          <div className="message-box">
+            <span className="more-options"></span>
+            <input
+              type="text"
+              value={message}
+              placeholder="Your message"
+              onChange={handleChangeMessage}
+              onKeyPress={handeKeypress}
+            />
+          </div>
+        </div>
       ) : (
+        // </div>
         <StartChat
           onSubmit={(person: string) => {
             setPerson(person);
