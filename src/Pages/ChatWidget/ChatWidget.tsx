@@ -1,5 +1,5 @@
 import React, { ReactElement } from 'react'
-import { Chat } from '../../components/Chat'
+// import { Chat } from '../../components/Chat'
 import styled from 'styled-components'
 
 
