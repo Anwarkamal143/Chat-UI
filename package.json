@@ -1,6 +1,6 @@
 {
   "name": "chatwidget-ui",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "main": "npmChatWidget/chatWidget.js",
   "dependencies": {
     "@babel/polyfill": "^7.12.1",

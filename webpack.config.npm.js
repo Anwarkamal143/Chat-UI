@@ -16,7 +16,7 @@ module.exports = {
     libraryTarget: "umd",
     umdNamedDefine: true,
   },
-  // devtool: "source-map",
+  devtool: "source-map",
   resolve: {
     extensions: [
       ".ts",
@@ -30,10 +30,7 @@ module.exports = {
       ".jpeg",
     ],
   },
-  optimization: {
-    // We no not want to minimize our code.
-    minimize: false,
-  },
+
   module: {
     rules: [
       {
