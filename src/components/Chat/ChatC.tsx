@@ -16,7 +16,7 @@ import { CHATOPTIONS } from "../../utils/enums";
 type IChatProps = {
   className?: string;
 };
-
+// * todo remove process.env variables after api setup for dynamic options
 const ChatC = (props: IChatProps): ReactElement => {
   const { className } = props;
   const [tabStates, setTabStates] = useState<string>(CHATOPTIONS.CHAT);
@@ -60,7 +60,7 @@ const ChatC = (props: IChatProps): ReactElement => {
           </div>
           <div className="bottom-area">
             <ul className="tabset">
-              {ISCHAT_FEATURE && (
+              {(ISCHAT_FEATURE || process.env.REACT_APP_CHAT) && (
                 <li>
                   <Link
                     to="#"
@@ -74,7 +74,7 @@ const ChatC = (props: IChatProps): ReactElement => {
                   </Link>
                 </li>
               )}
-              {ISFAQ_FEATURE && (
+              {(ISFAQ_FEATURE || process.env.REACT_APP_FAQ) && (
                 <li>
                   <Link
                     to="#"
@@ -88,7 +88,7 @@ const ChatC = (props: IChatProps): ReactElement => {
                   </Link>
                 </li>
               )}
-              {ISTICKET_FEATURE && (
+              {(ISTICKET_FEATURE || process.env.REACT_APP_TICKET) && (
                 <li>
                   <Link
                     to="#"
@@ -102,7 +102,7 @@ const ChatC = (props: IChatProps): ReactElement => {
                   </Link>
                 </li>
               )}
-              {ISCALLBACK_FEATURE && (
+              {(ISCALLBACK_FEATURE || process.env.REACT_APP_CALLBACK) && (
                 <li>
                   <Link
                     to="#"
