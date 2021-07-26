@@ -43,15 +43,10 @@ function HtmlTagWrapper(Component: (props?: any) => JSX.Element, config:any) {
 
   let el = document.getElementById('ChatWidget');
   let props :any= {}
-  if (el) {
-    const attrs = el?.attributes;
+  const attrs = el?.attributes;
+  if (attrs) {
     props = attrToObj(attrs);
-  console.log(props);
-}else {
-  el = document.createElement("div");
-  el.id = "ChatWidget";
-  document.body.appendChild(el);
-}
+  }
 if (config) {
   props = Object.assign(props,config)
 }
