@@ -1,6 +1,6 @@
 {
   "name": "chatwidget-ui",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "main":"lib/chatWidget.min.js",
   "dependencies": {
     "@babel/polyfill": "^7.12.1",
@@ -36,7 +36,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "build:bundle": "webpack --config webpack.config.js",
-    "prepublish": "npm run build:bundle"
+
   },
   "eslintConfig": {
     "extends": [
