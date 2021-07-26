@@ -1,5 +1,5 @@
 import React, { ReactElement } from 'react'
-import { Chat } from '../../components/Chat'
+// import { Chat } from '../../components/Chat'
 import styled from 'styled-components'
 
 
@@ -11,7 +11,7 @@ const  ChatWidget = (props: IChatProps): ReactElement => {
     const {className} = props
     return (
       <div className={className}>
-        <Chat />
+        {/* <Chat /> */}
       Testing Chat Widget
         {/* <div className="bottom-area">
           <ul className="tabset">
