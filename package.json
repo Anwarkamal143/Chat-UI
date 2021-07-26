@@ -1,7 +1,7 @@
 {
-  "name": "chat-ui",
-  "version": "0.1.0",
-  "private": true,
+  "name": "chatwidget-ui",
+  "version": "1.0.1",
+  "main":"lib/chatWidget.min.js",
   "dependencies": {
     "@babel/polyfill": "^7.12.1",
     "@testing-library/jest-dom": "^5.11.4",
@@ -35,7 +35,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "build:bundle": "webpack --config webpack.config.js"
+    "build:bundle": "webpack --config webpack.config.js",
+    "prepublish": "npm run build:bundle"
   },
   "eslintConfig": {
     "extends": [
@@ -55,6 +56,11 @@
       "last 1 safari version"
     ]
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Anwarkamal143/chat-ui"
+  },
+  "author": "Anwar kamal < anwarkamal1434@gmail.com > (https://github.com/Anwarkamal143)", "license": "ISC",
   "devDependencies": {
     "@types/react-router": "^5.1.16",
     "@types/react-router-dom": "^5.1.8",

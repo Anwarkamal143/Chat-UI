@@ -11,7 +11,8 @@ const  ChatWidget = (props: IChatProps): ReactElement => {
     const {className} = props
     return (
       <div className={className}>
-        <Chat />
+        {/* <Chat /> */}
+      Testing Chat Widget
         {/* <div className="bottom-area">
           <ul className="tabset">
             <li>

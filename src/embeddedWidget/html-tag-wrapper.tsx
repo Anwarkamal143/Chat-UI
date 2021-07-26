@@ -41,16 +41,22 @@ function attrToObj(attrs: NamedNodeMap) {
 
 function HtmlTagWrapper(Component: (props?: any) => JSX.Element, config:any) {
 
-  const el = document.getElementById('ChatWidget');
-  const attrs = el!.attributes;
-// if (attrs) {
-  let props = attrToObj(attrs);
+  let el = document.getElementById('ChatWidget');
+  let props :any= {}
+  if (el) {
+    const attrs = el?.attributes;
+    props = attrToObj(attrs);
   console.log(props);
-  if (config) {
-    props = Object.assign(props,config)
-  }
-  ReactDOM.render(<Component {...props} />, el);
-// }
+}else {
+  el = document.createElement("div");
+  el.id = "ChatWidget";
+  document.body.appendChild(el);
 }
+if (config) {
+  props = Object.assign(props,config)
+}
+  ReactDOM.render(<Component {...props} />, el);
+}
+
 
 export { HtmlTagWrapper };
