@@ -39,7 +39,7 @@ function attrToObj(attrs: NamedNodeMap) {
   return attrsObj;
 }
 
-function HtmlTagWrapper(Component: (props?: any) => JSX.Element, config:any) {
+function HtmlTagWrapper(Component: (props?: any) => JSX.Element, config: any) {
 
   let el = document.getElementById('ChatWidget');
   let props :any= {}
@@ -47,8 +47,8 @@ function HtmlTagWrapper(Component: (props?: any) => JSX.Element, config:any) {
   if (attrs) {
     props = attrToObj(attrs);
   }
-if (config) {
-  props = Object.assign(props,config)
+if(config){
+  props =Object.assign(props, config);
 }
   ReactDOM.render(<Component {...props} />, el);
 }
