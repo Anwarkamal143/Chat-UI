@@ -1,7 +1,7 @@
 {
-  "name": "chatwidget-ui",
-  "version": "1.0.7",
-  "main": "mpmwidget/chatWidget.js",
+  "name": "chat-widgetui",
+  "version": "1.0.0",
+  "main": "npmChatWidget/chatWidget.js",
   "dependencies": {
     "@babel/polyfill": "^7.12.1",
     "@testing-library/jest-dom": "^5.11.4",
@@ -36,7 +36,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "build:bundle": "webpack --config webpack.config.js",
-    "build:npm": "webpack --config webpack.config.npm.js"
+    "build:npm": "webpack --config webpack.npm.config.js"
   },
   "eslintConfig": {
     "extends": [
