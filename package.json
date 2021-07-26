@@ -1,7 +1,7 @@
 {
   "name": "chatwidget-ui",
-  "version": "1.0.6",
-  "main": "chatWidget.js",
+  "version": "1.0.7",
+  "main": "mpmwidget/chatWidget.js",
   "dependencies": {
     "@babel/polyfill": "^7.12.1",
     "@testing-library/jest-dom": "^5.11.4",
