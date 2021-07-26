@@ -1,7 +1,7 @@
 {
   "name": "chatwidget-ui",
-  "version": "1.0.3",
-  "main":"lib/chatWidget.min.js",
+  "version": "1.0.4",
+  "main": "npmChatWidget/chatWidget.js",
   "dependencies": {
     "@babel/polyfill": "^7.12.1",
     "@testing-library/jest-dom": "^5.11.4",
@@ -35,8 +35,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "build:bundle": "webpack --config webpack.config.js"
-
+    "build:bundle": "webpack --config webpack.config.js",
+    "build:npm": "webpack --config webpack.config.npm.js"
   },
   "eslintConfig": {
     "extends": [
@@ -60,7 +60,8 @@
     "type": "git",
     "url": "https://github.com/Anwarkamal143/chat-ui"
   },
-  "author": "Anwar kamal < anwarkamal1434@gmail.com > (https://github.com/Anwarkamal143)", "license": "ISC",
+  "author": "Anwar kamal < anwarkamal1434@gmail.com > (https://github.com/Anwarkamal143)",
+  "license": "ISC",
   "devDependencies": {
     "@types/react-router": "^5.1.16",
     "@types/react-router-dom": "^5.1.8",
