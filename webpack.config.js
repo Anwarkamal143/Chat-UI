@@ -3,8 +3,8 @@ const glob = require('glob');
 const webpack = require("webpack");
 module.exports = {
   //do stuff with the webpack config...
-  mode: 'production',
-  entry: path.join(__dirname, "./src/widget.ts"),
+  mode: "production",
+  entry: path.join(__dirname, "./src/embeddedWidget/widget.ts"),
   // entry: glob
   //   .sync("build/static/?(js|css)/*.?(js|css)")
   //   .map((f) => path.resolve(__dirname, f)),
@@ -42,6 +42,8 @@ module.exports = {
           compilerOptions: {
             module: "es2015",
           },
+
+          configFile: require.resolve("./tsconfig-widget.json"),
         },
       },
       {

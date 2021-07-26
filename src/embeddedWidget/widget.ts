@@ -1,4 +1,4 @@
-import App from "./App";
+import App from "../App";
 import { HtmlTagWrapper } from "./html-tag-wrapper";
 // import { ChatWidget } from "./Pages/ChatWidget";
 
